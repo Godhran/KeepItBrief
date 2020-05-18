@@ -29,6 +29,8 @@ var app = express();
 //   next(createError(404));
 // });
 
+let emailTopic = [`Hey, can you help me out?`, `Can you do me a solid?`, `Hot young logos in your area`, `Any chance you can do this?`, `Offering a very lucrative exposure deal`, `You like this stuff right?`, `So...I'm in a jam`, `OH GOD PLEASE`];
+
 let colours = ['White', 'Yellow', 'Blue', 'Red', 'Green', 'Black', 'Brown', 'Azure', 'Ivory', 'Teal', 'Silver', 'Purple', 'Navy blue', 'Pea green', 'Gray', 'Orange', 'Maroon', 'Charcoal', 'Aquamarine', 'Coral', 'Fuchsia', 'Wheat', 'Lime', 'Crimson', 'Khaki', 'Hot pink', 'Magenta', 'Olden', 'Plum', 'Olive', 'Cyan'];
 let icons = ['rubber duck', 'bottle', 'candy wrapper', 'pen', 'wagon', 'drawer', 'lamp', 'scotch tape', 'rubber band', 'table', 'twezzers', 'doll', 'paper', 'chair', 'charger', 'flag', 'bracelet', 'twister', 'radio', 'milk', 'chapter book', 'bag', 'street lights', 'bookmark', 'photo album', 'shoes', 'wallet', 'stockings', 'mp3 player', 'video games', 'pants', 'toilet', 'slipper', 'bread', 'mouse pad', 'sofa', 'tree', 'CD', 'speakers', 'camera', 'toe ring', 'greeting card', 'sun glasses', 'leg warmers', 'tire swing', 'water bottle', 'phone', 'mirror', 'lip gloss', 'bananas', 'brocolli', 'blouse', 'lotion', 'white out', 'soap', 'soy sauce packet', 'knife', 'thermometer', 'cell phone', 'pillow', 'hair brush', 'bottle cap', 'button', 'spring', 'ring', 'television', 'drill press', 'balloon', 'checkbook', 'fake flowers', 'deodorant', 'candle', 'hair tie', 'monitor', 'lace', 'washing machine', 'sponge', 'keys', 'toothbrush', 'air freshener', 'sandal', 'rug', 'model car', 'picture frame', 'zipper', 'newspaper', 'clock', 'lamp shade', 'pencil', 'boom box', 'desk', 'needle', 'cinder block', 'controller', 'tomato', 'pool stick', 'cork', 'grid paper', 'face wash', 'keyboard', 'glasses', 'sailboat', 'tv', 'paint brush', 'truck', 'apple', 'clay pot', 'plate', 'nail file', 'food', 'tooth picks', 'bow', 'sketch pad', 'canvas', 'perfume', 'eye liner', 'floor', 'socks', 'blanket', 'fork', 'headphones', 'tissue box', 'toothpaste', 'outlet', 'glass', 'house', 'sticky note', 'door', 'playing card', 'cookie jar', 'nail clippers', 'carrots', 'spoon', 'sand paper', 'window', 'key chain', 'teddies', 'piano', 'buckel', 'chalk', 'helmet', 'hanger', 'cat', 'magnet', 'car', 'packing peanuts', 'fridge', 'mop', 'watch', 'towel', 'thread', 'bowl', 'clamp', 'USB drive', 'vase', 'conditioner', 'coasters', 'computer', 'puddle', 'clothes', 'glow stick', 'shoe lace', 'plastic fork', 'money', 'book', 'beef', 'bed', 'ipod', 'soda can', 'shovel', 'remote', 'ice cube tray', 'shirt', 'shawl', 'sharpie', 'flowers', 'screw', 'purse', 'chocolate', 'shampoo', 'thermostat', 'credit card', 'cup', 'eraser', 'sidewalk', 'seat belt', 'rusty nail', 'stop sign', 'couch', 'box'];
 let logoTypes = ['Abstract Mark', 'Mascot Logo', 'Combination Mark', 'Emblem Logo', 'Lettermark', 'Pictorial Mark', 'Wordmark'];
@@ -37,7 +39,7 @@ let companyTypes = ['Antiques Dealer', 'Art Gallery', 'Bartending Service', 'Boa
 
 let companySurnames = ['Gray', 'Clements', 'Schmitt', 'Petersen', 'Hooper', 'French', 'Stein', 'Gill', 'Key', 'Houston', 'Gonzalez', 'Murphy', 'Goodwin', 'Huff', 'Kelly', 'Paul', 'Luna', 'Ayers', 'Herring', 'Huerta', 'Khan', 'James', 'Duffy', 'Wiley', 'Mckee', 'Finley', 'Armstrong', 'Fry', 'Huang', 'Blevins', 'Bridges', 'Richards', 'Wiggins', 'Prince', 'Zavala', 'Vasquez', 'Best', 'Strong', 'Knight', 'Mccoy', 'Buck', 'Montgomery', 'Fritz', 'Espinoza', 'Grimes', 'Short', 'Lindsey', 'Hancock', 'Fuentes', 'Morse', 'Duran', 'Roth', 'Leonard', 'Petty', 'Salazar', 'Terry', 'Patton', 'Maynard', 'Madden', 'Cortez', 'Howard', 'Mcneil', 'Stewart', 'Blanchard', 'Scott', 'Sexton', 'Fernandez', 'Irwin', 'Charles', 'Cook', 'Esparza', 'Bass', 'Rangel', 'Griffith', 'Cox', 'Duke', 'Delgado', 'Fox', 'Daugherty', 'Garner', 'Castro', 'Padilla', 'Kane', 'Horton', 'Phelps', 'Francis', 'Browning', 'Levine', 'Summers', 'Poole', 'Cunningham', 'Bonilla', 'Brock', 'Marquez', 'Olsen', 'Cowan', 'Bartlett', 'Archer', 'McIntosh', 'Vang'];
 let companyEnd = ["Association", "Business", "Company", "Co.", "Corporation", "Corp.", "Club", "Emporium", "Foundation", "Fund", "Incorporated", "Inc.", "Institute", "Ltd.", "Society", "Syndicate", "Union", "& Sons"];
-
+let company = { companyName: "", clientName: "" };
 // // error handler
 // app.use(function(err, req, res, next) {
 //   // set locals, only providing error in development
@@ -69,10 +71,15 @@ app.use('/favicon.ico', express.static('./images/favicon.ico'));
 // });
 
 app.get('/', function (req, res, next) {
+  generateCompanyName();
   res.render('index', {
     title: 'Keep It Brief - Client brief generator',
+    emailSubject: emailTopic[Math.floor(Math.random() * emailTopic.length)],
+    imageSource: `https://api.adorable.io/avatars/512/${company.companyName}`,
+    clientName: company.clientName,
+    clientEmail: `${company.clientName.replace(/[^\w\s!?]/g,'').replace(" ","").toLowerCase()}`,
     dateReceived: getDate(),
-    companyName: generateCompanyName(),
+    companyName: company.companyName,
     companyType: companyTypes[Math.floor(Math.random() * companyTypes.length)],
     logoType: logoTypes[Math.floor(Math.random() * logoTypes.length)],
     icon: setTitleCase(icons[Math.floor(Math.random() * icons.length)]),
@@ -91,19 +98,26 @@ const setTitleCase = (string) => {
 
 const generateCompanyName = () => {
   let returnName = "";
+  var letters =
+    ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q"
+      , "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+  var letter = letters[Math.floor(Math.random() * letters.length)];
   let familyName = companySurnames[Math.floor(Math.random() * companySurnames.length)];
   let businessEnd = companyEnd[Math.floor(Math.random() * companyEnd.length)];
   // if((Math.floor(Math.random * 6)+1)===5){
   //   familyNam
   // }
   console.log(familyName);
+  company.clientName = `${letter.toUpperCase()}. ${familyName}`;
   if (familyName.toUpperCase().charAt(familyName.length - 1) === "S") {
     familyName += `'`;
   } else {
     familyName += `'s`;
   }
   returnName = familyName + " " + businessEnd;
-  return returnName.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  company.companyName = returnName;
+  // return returnName.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 };
 
 const getDate = () => {

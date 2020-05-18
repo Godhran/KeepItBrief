@@ -35,11 +35,11 @@
         <div class="container" id="emailHeader">
           <div class="form-row">
             <div class="col-md-6 col-lg-3" id="avatarColumn"><img class="mailAvatar"
-                src="./images/john-wayne-9525664-1-402.jpg"></div>
+                src="<%=imageSource%>"></div>
             <div class="col-md-6 col-lg-9 d-lg-flex align-items-lg-center">
               <div>
-                <h3>Hey, can you help me out?</h3>
-                <h6>John Wayne &lt;john-wayne@pardner.com&gt;</h6>
+                <h3><%=emailSubject%></h3>
+                <h6><%=clientName%> &lt;<%=clientEmail%>@keepitbrief.com&gt;</h6>
                 <h6><%=dateReceived%></h6>
               </div>
             </div>
@@ -47,7 +47,7 @@
         </div>
         <div class="container" id="emailContent">
           <div id="emailText">
-            <p>Howdy doowdy pardner, need you to rustle up a logo.</p>
+            <p>Hey! We just founded a new business called "<%=companyName%>" and we're kinda like a <i><%=companyType.toLowerCase()%></i> thing. I was wondering if you could whip us up some <%=logoType.toLowerCase()%> thing with maybe some sort of <%=icon.toLowerCase()%> in it? Preferably <%=colour.toLowerCase()%>. Thanks!</p>
             <h6><strong>Company</strong>: <%= companyName %></h6>
             <h6><strong>Company Type</strong>: <%= companyType %></h6>
             <h6><strong>Logo Type</strong>: <%= logoType %></h6>
