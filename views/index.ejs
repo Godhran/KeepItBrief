@@ -34,8 +34,7 @@
       <form method="post">
         <div class="container" id="emailHeader">
           <div class="form-row">
-            <div class="col-md-6 col-lg-3" id="avatarColumn"><img class="mailAvatar"
-                src="<%=imageSource%>"></div>
+            <div class="col-md-6 col-lg-3" id="avatarColumn"><img class="mailAvatar" src="<%=imageSource%>"></div>
             <div class="col-md-6 col-lg-9 d-lg-flex align-items-lg-center">
               <div>
                 <h3><%=emailSubject%></h3>
@@ -47,31 +46,64 @@
         </div>
         <div class="container" id="emailContent">
           <div id="emailText">
-            <p>Hey! We just founded a new business called "<%=companyName%>" and we're kinda like a <i><%=companyType.toLowerCase()%></i> thing. I was wondering if you could whip us up some <%=logoType.toLowerCase()%> thing with maybe some sort of <%=icon.toLowerCase()%> in it? Preferably <%=colour.toLowerCase()%>. Thanks!</p>
+            <p>Hey! We just founded a new business called "<%=companyName%>" and we're kinda like a
+              <i><%=companyType.toLowerCase()%></i> thing. I was wondering if you could whip us up some
+              <%=logoType.toLowerCase()%> thing with maybe some sort of <%=icon.toLowerCase()%> in it? Preferably
+              <%=colour.name.toLowerCase()%>. Thanks!</p>
             <h6><strong>Company</strong>: <%= companyName %></h6>
             <h6><strong>Company Type</strong>: <%= companyType %></h6>
             <h6><strong>Logo Type</strong>: <%= logoType %></h6>
             <h6><strong>Preferred Icon</strong>: <%= icon %></h6>
-            <h6><strong>Preferred Colour</strong>: <%= colour.match(/[A-Z][a-z]+/g).join(" ") %></h6>
-            <span style="height: 25px; width: 30%; background-color: <%=colour%>; display: inline-block; stroke-width:5; stroke:black"></span>
+            <h6><strong>Preferred Colour</strong>: <%= colour.name.match(/[A-Z][a-z]+/g).join(" ") %></h6>
+            <span
+              style="height: 25px; width: 30%; background-color: <%=colour.hex%>; display: inline-block; stroke-width:5; stroke:black"></span>
           </div>
         </div>
         <div class="container" id="optionsContainer">
           <div class="form-row d-lg-flex align-items-lg-center" id="optionRow">
-              <div class="col-md-4 optionsButton" id="trash"><i class="fa fa-trash"></i><span class="buttonText">No way, José</span></div>
-              <div class="col-md-4" id="accept"><i class="fa fa-thumbs-up"></i><span class="buttonText">You got it, chief</span></div>
-              <div class="col-md-4" id="kofi"><i class="fa fa-coffee"></i><span class="buttonText">Ko-fi</span></div>
+            <div class="col-md-4 optionsButton" id="trash" onclick="location.reload();"><i class="fa fa-trash"></i><span
+                class="buttonText">No way, José</span></div>
+            <div class="col-md-4" id="accept" onclick="copyClipboard();"><i class="fa fa-thumbs-up"></i><span
+                class="buttonText">You got it, chief</span></div>
+            <div class="col-md-4" id="kofi" onclick="location.href='https://ko-fi.com/godhran'"><i
+                class="fa fa-coffee"></i><span class="buttonText">Ko-fi</span></div>
           </div>
-      </div>
+        </div>
       </form>
     </div>
   </div>
   <div class="footer-basic">
     <footer>
-        <div class="social"><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="fab fa-discord"></i></a></div>
-        <p class="copyright">Odhrán Gormley © 2020</p>
+      <div class="social">
+        <a href="https://www.twitter.com/gorodhran"><i class="icon ion-social-twitter"></i></a>
+        <a href="https://discordapp.com/users/288047056273276938/"><i class="fab fa-discord"></i></a></div>
+      <p class="copyright">Odhrán Gormley © 2020</p>
     </footer>
-</div>
+  </div>
+
+  <script>
+    function copyClipboard() {
+      var el = document.createElement('textarea');
+      // Set value (string to be copied)
+      el.value = `Company:\t <% companyName %>\n
+      Company Type:\t <%= companyType %>\n
+      Logo Type:\t <%= logoType %>\n
+      Preferred Icon:\t <%= icon %>\n
+      Preferred Colour:\t <%= colour.name.match(/[A-Z][a-z]+/g).join(" ") %> <%=colour.hex%>\n`;
+      // Set non-editable to avoid focus and move outside of view
+      el.setAttribute('readonly', '');
+      el.style = { position: 'absolute', left: '-9999px' };
+      document.body.appendChild(el);
+      // Select text inside element
+      el.select();
+      // Copy text to clipboard
+      document.execCommand('copy');
+      // Remove temporary element
+      document.body.removeChild(el);
+      document.execCommand("copy");
+    }
+  </script>
+
   <script src="./javascripts/jquery.min.js"></script>
   <script src="./bootstrap/js/bootstrap.min.js"></script>
 </body>
