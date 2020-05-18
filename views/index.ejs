@@ -52,7 +52,8 @@
             <h6><strong>Company Type</strong>: <%= companyType %></h6>
             <h6><strong>Logo Type</strong>: <%= logoType %></h6>
             <h6><strong>Preferred Icon</strong>: <%= icon %></h6>
-            <h6><strong>Preferred Colour</strong>: <%= colour %></h6>
+            <h6><strong>Preferred Colour</strong>: <%= colour.match(/[A-Z][a-z]+/g).join(" ") %></h6>
+            <span style="height: 25px; width: 30%; background-color: <%=colour%>; display: inline-block; stroke-width:5; stroke:black"></span>
           </div>
         </div>
         <div class="container" id="optionsContainer">
