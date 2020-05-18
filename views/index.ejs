@@ -1,0 +1,81 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mitr">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+
+  <link rel="stylesheet" href="./fonts/fontawesome-all.min.css">
+  <link rel="stylesheet" href="./fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="./fonts/ionicons.min.css">
+  <link rel="stylesheet" href="./fonts/fontawesome5-overrides.min.css">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+
+  <link rel="stylesheet" href="./stylesheets/styles.min.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-light navbar-expand-md">
+    <div class="container-fluid">
+      <a class="navbar-brand" data-bs-hover-animate="tada" href="#">Keep It Brief</a>
+      <div class="collapse navbar-collapse" id="navcol-1">
+        <ul class="nav navbar-nav"></ul>
+      </div>
+    </div>
+  </nav>
+  <div class="register-photo">
+    <div class="form-container">
+      <form method="post">
+        <div class="container" id="emailHeader">
+          <div class="form-row">
+            <div class="col-md-6 col-lg-3" id="avatarColumn"><img class="mailAvatar"
+                src="./images/john-wayne-9525664-1-402.jpg"></div>
+            <div class="col-md-6 col-lg-9">
+              <div>
+                <h3>Hey, can you help me out?</h3>
+                <h6>John Wayne &lt;john-wayne@pardner.com&gt;</h6>
+                <h6><%=dateReceived%></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container" id="emailContent">
+          <div id="emailText">
+            <p>Howdy doowdy pardner, need you to rustle up a logo.</p>
+            <h6><strong>Company</strong>: <%= companyName %></h6>
+            <h6><strong>Company Type</strong>: <%= companyType %></h6>
+            <h6><strong>Logo Type</strong>: <%= logoType %></h6>
+            <h6><strong>Preferred Icon</strong>: <%= icon %></h6>
+            <h6><strong>Preferred Colour</strong>: <%= colour %></h6>
+          </div>
+        </div>
+        <div class="container" id="optionsContainer">
+          <div class="form-row d-lg-flex align-items-lg-center" id="optionRow">
+            <div class="col-md-4">
+              <div id="trashButton"><i class="fa fa-trash"></i><label>No way José</label></div>
+            </div>
+            <div class="col-md-4"><i class="fa fa-thumbs-up"></i><label>Got you, chief</label></div>
+            <div class="col-md-4"><i class="fa fa-coffee"></i><label>Ko-Fi</label></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="footer-basic">
+    <footer>
+      <div class="social"><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i
+            class="fab fa-discord"></i></a></div>
+      <p class="copyright">Odhrán Gormley © 2020</p>
+    </footer>
+  </div>
+  <script src="./javascripts/jquery.min.js"></script>
+  <script src="./bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
