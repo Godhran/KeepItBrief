@@ -34,7 +34,16 @@
       <form method="post">
         <div class="container" id="emailHeader">
           <div class="form-row">
-            <div class="col-md-6 col-lg-3" id="avatarColumn"><img class="mailAvatar" src="<%=imageSource%>"></div>
+            <div class="col-md-6 col-lg-3" id="avatarColumn">
+              <svg class="mailAvatar" preserveAspectRatio="none" viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="96.25" fill="var(--dark-colour)" />
+                    <path d="M197,100c0,25.9-10.16,49.45-26.71,66.85C155.12,142.9,115,142.78,115,125c0-6.45,3.83-12.06,7.95-19.36
+                    c2.43,0,5.29-2.84,6.76-6.96c1.16-3.25,1.15-6.44,0.16-8.4C131.73,84.41,133,77.48,133,69c0-12.15-6.88-19.44-14.46-23.78
+                    c-12.04-6.91-27.04-6.91-39.08,0C71.88,49.56,65,56.85,65,69c0,8.48,1.27,15.41,3.13,21.28c-0.99,1.96-1,5.15,0.16,8.4
+                    c1.47,4.12,4.33,6.96,6.76,6.96C79.17,112.94,83,118.55,83,125c0,17.46-38.71,17.89-54.45,40.6C12.69,148.34,3,125.29,3,100
+                    C3,46.43,46.43,3,100,3S197,46.43,197,100z" fill="<%=colour.hex%>" />
+              </svg>
+            </div>
             <div class="col-md-6 col-lg-9 d-lg-flex align-items-lg-center">
               <div>
                 <h3><%=emailSubject%></h3>
@@ -48,13 +57,14 @@
           <div id="emailText">
             <p>Hey! We just founded a new business called "<%=companyName%>" and we're kinda like a
               <i><%=companyType.toLowerCase()%></i> thing. I was wondering if you could whip us up some
-              <%=logoType.toLowerCase()%> thing with maybe some sort of <%=icon.toLowerCase()%> in it? Preferably
-              <%=colour.name.toLowerCase()%>. Thanks!</p>
+              <%=logoType.toLowerCase()%> thing with maybe some kind of
+              <i><%= colour.name.match(/[A-Z][a-z]+/g).join(" ").toLowerCase() %></i> colour? Thanks!</p>
             <h6><strong>Company</strong>: <%= companyName %></h6>
             <h6><strong>Company Type</strong>: <%= companyType %></h6>
-            <h6><strong>Logo Type</strong>: <%= logoType %></h6>
-            <h6><strong>Preferred Icon</strong>: <%= icon %></h6>
-            <h6><strong>Preferred Colour</strong>: <%= colour.name.match(/[A-Z][a-z]+/g).join(" ") %> <%=colour.hex%></h6>
+            <h6><strong>Logo Type</strong>: <%= logoType %> <small>What's this?</small></h6>
+            <!-- <h6><strong>Preferred Icon</strong>: <%= icon %></h6> -->
+            <h6><strong>Preferred Colour</strong>: <%= colour.name.match(/[A-Z][a-z]+/g).join(" ") %> <%=colour.hex%>
+            </h6>
             <span
               style="height: 25px; width: 30%; background-color: <%=colour.hex%>; display: inline-block; stroke-width:5; stroke:black"></span>
           </div>
