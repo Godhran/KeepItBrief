@@ -37,7 +37,7 @@
             <div class="col-md-6 col-lg-3" id="avatarColumn">
               <svg class="mailAvatar" preserveAspectRatio="none" viewBox="0 0 200 200">
                 <circle cx="100" cy="100" r="96.25" fill="var(--dark-colour)" />
-                    <path d="M197,100c0,25.9-10.16,49.45-26.71,66.85C155.12,142.9,115,142.78,115,125c0-6.45,3.83-12.06,7.95-19.36
+                <path d="M197,100c0,25.9-10.16,49.45-26.71,66.85C155.12,142.9,115,142.78,115,125c0-6.45,3.83-12.06,7.95-19.36
                     c2.43,0,5.29-2.84,6.76-6.96c1.16-3.25,1.15-6.44,0.16-8.4C131.73,84.41,133,77.48,133,69c0-12.15-6.88-19.44-14.46-23.78
                     c-12.04-6.91-27.04-6.91-39.08,0C71.88,49.56,65,56.85,65,69c0,8.48,1.27,15.41,3.13,21.28c-0.99,1.96-1,5.15,0.16,8.4
                     c1.47,4.12,4.33,6.96,6.76,6.96C79.17,112.94,83,118.55,83,125c0,17.46-38.71,17.89-54.45,40.6C12.69,148.34,3,125.29,3,100
@@ -61,7 +61,8 @@
               <i><%= colour.name.match(/[A-Z][a-z]+/g).join(" ").toLowerCase() %></i> colour? Thanks!</p>
             <h6><strong>Company</strong>: <%= companyName %></h6>
             <h6><strong>Company Type</strong>: <%= companyType %></h6>
-            <h6><strong>Logo Type</strong>: <%= logoType %> <small>What's this?</small></h6>
+            <h6><strong>Logo Type</strong>: <%= logoType %> <small><a class="logoWhatsThis" href="#myModal" data-toggle="modal"
+                  data-target="#myModal">What's this?</a></small></h6>
             <!-- <h6><strong>Preferred Icon</strong>: <%= icon %></h6> -->
             <h6><strong>Preferred Colour</strong>: <%= colour.name.match(/[A-Z][a-z]+/g).join(" ") %> <%=colour.hex%>
             </h6>
@@ -80,6 +81,38 @@
           </div>
         </div>
       </form>
+    </div>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Logo Types</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <h2>Abstract Mark</h2>
+          <img style="margin-bottom: 3.5em;" src="./images/abstractmark.png" alt="Abstract Mark">
+          <h2>Mascot Logo</h2>
+          <img style="margin-bottom: 3.5em;" src="./images/mascotLogo.png" alt="Mascot Logo">
+          <h2>Combination Mark</h2>
+          <img style="margin-bottom: 3.5em;" src="./images/combinationmark.png" alt="Combination Mark">
+          <h2>Emblem Logo</h2>
+          <img style="margin-bottom: 3.5em;" src="./images/emblemlogo.png" alt="Emblem Logo">
+          <h2>Lettermark</h2>
+          <img style="margin-bottom: 3.5em;" src="./images/lettermark.png" alt="Lettermark">
+          <h2>Pictorial Mark</h2>
+          <img style="margin-bottom: 3.5em;" src="./images/pictorial.png" alt="Pictorial Mark">
+          <h2>Wordmark</h2>
+          <img style="margin-bottom: 3.5em;" src="./images/wordmark.png" alt="Wordmark">
+        </div>
+        <div class="modal-footer">
+          <button id="modalClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
     </div>
   </div>
   <div class="footer-basic">
