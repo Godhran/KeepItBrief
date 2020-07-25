@@ -4,7 +4,6 @@
 Keep It Brief is a simple tool for designers to quickly generate a prompt for practicing their design skills. It will generate a faux-email describing the company, type of company, logo required and the preferred colour for the design.
 
 ## Packages In Use
-- [Angular CLI](https://github.com/angular/angular-cli)
 - [Bootstrap](https://www.npmjs.com/package/bootstrap)
 - [Express](https://www.npmjs.com/package/express)
 - [jQuery](https://www.npmjs.com/package/jquery)
@@ -12,7 +11,7 @@ Keep It Brief is a simple tool for designers to quickly generate a prompt for pr
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:5000/`. The app will automatically reload if you change any of the source files.
 
 
 ## License
