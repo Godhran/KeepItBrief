@@ -8,7 +8,7 @@ Keep It Brief is a simple tool for designers to quickly generate a prompt for pr
 - [Bootstrap](https://www.npmjs.com/package/bootstrap)
 - [Express](https://www.npmjs.com/package/express)
 - [jQuery](https://www.npmjs.com/package/jquery)
-- EJS
+- [Embedded JavaScript templates](https://www.npmjs.com/package/ejs)
 
 ## Development server
 
